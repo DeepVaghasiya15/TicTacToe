@@ -11,6 +11,7 @@ class MainMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return WrapperContainer(
       child: Center(
         child: Column(
@@ -23,6 +24,9 @@ class MainMenu extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
+            gap2XL(),
+            Image.asset("assets/OXlogo.png",width: 200,height: 200,),
+            gap4XL(),
             gap4XL(),
             MainMenuButtons(
               btnText: 'Single Player',
@@ -69,17 +73,17 @@ class MainMenuButtons extends StatelessWidget {
         child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
-            backgroundColor: GameColors.kForeground,
+            backgroundColor: GameColors.kWhitish,
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(20),
             ),
           ),
           child: Text(
             btnText,
             style: const TextStyle(
-              color: GameColors.kWhitish,
-              fontSize: 20,
+              color: Colors.black,
+              fontSize: 22,
               fontWeight: FontWeight.bold,
             ),
           ),

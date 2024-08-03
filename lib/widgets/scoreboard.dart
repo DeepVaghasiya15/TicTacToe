@@ -26,16 +26,16 @@ class ScoreBoard extends StatelessWidget {
         width: 150,
         height: 100,
         decoration: BoxDecoration(
-          color: GameColors.kForeground,
+          color: GameColors.kWhitish,
           borderRadius: borderRadiusM(),
           border: isTurn
               ? playerLabel == playerXName
                   ? Border.all(
-                      color: GameColors.kBlue,
+                      color: Colors.green,
                       width: 2.0,
                     )
                   : Border.all(
-                      color: GameColors.kPurple,
+                      color: Colors.red,
                       width: 2.0,
                     )
               : null,
@@ -46,18 +46,18 @@ class ScoreBoard extends StatelessWidget {
             Text(
               playerLabel,
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: playerLabel == playerXName ? Colors.blue : Colors.purple,
+                color: playerLabel == playerXName ? Colors.green : Colors.red,
               ),
             ),
             Text(
               score.toString(),
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 26,
                 fontFamily: GoogleFonts.caveat().fontFamily,
                 fontWeight: FontWeight.bold,
-                color: GameColors.kWhitish,
+                color: Colors.black,
               ),
             ),
           ],

@@ -177,8 +177,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                       child: GridView.builder(
                         padding: const EdgeInsets.all(5.0),
                         shrinkWrap: true,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 3,
                           crossAxisSpacing: 10.0,
                           mainAxisSpacing: 10.0,
@@ -194,23 +193,28 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                               }
                             },
                             child: Container(
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.all(
+                                borderRadius: const BorderRadius.all(
                                   Radius.circular(10.0),
                                 ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.2), // Shadow color
+                                    spreadRadius: 2, // Spread radius
+                                    blurRadius: 8, // Blur radius
+                                    offset: const Offset(2, 4), // Offset in the x and y directions
+                                  ),
+                                ],
                               ),
                               child: Center(
                                 child: Text(
                                   board[row][col],
                                   style: TextStyle(
                                     fontSize: 50,
-                                    fontFamily: GoogleFonts.permanentMarker()
-                                        .fontFamily,
+                                    fontFamily: GoogleFonts.permanentMarker().fontFamily,
                                     fontWeight: FontWeight.bold,
-                                    color: board[row][col] == 'X'
-                                        ? GameColors.kBlue
-                                        : GameColors.kPurple,
+                                    color: board[row][col] == 'X' ? Colors.green : Colors.red,
                                   ),
                                 ),
                               ),
@@ -219,6 +223,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                         },
                         itemCount: 9,
                       ),
+
                     ),
                   ),
                 ],

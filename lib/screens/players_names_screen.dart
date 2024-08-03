@@ -13,9 +13,9 @@ class PlayerNames extends HookWidget {
   Widget buildTextField(String hintText, IconData icon, bool isX,
           ValueSetter<String> onChanged, TextEditingController controller) =>
       TextField(
-        cursorColor: isX ? GameColors.kWhitish : GameColors.kPurple,
+        cursorColor: isX ? Colors.green : Colors.red,
         style: const TextStyle(
-          color: GameColors.kWhitish,
+          color: Colors.black,
         ),
         controller: controller,
         onChanged: onChanged,
@@ -27,12 +27,12 @@ class PlayerNames extends HookWidget {
             borderSide: BorderSide.none,
             borderRadius: borderRadiusM(),
           ),
-          fillColor: GameColors.kForeground,
+          fillColor: GameColors.kGrey,
           hintText: hintText,
           hintStyle: const TextStyle(color: GameColors.kBackground),
           prefixIcon: Icon(
             icon,
-            color: isX ? GameColors.kBlue : GameColors.kPurple,
+            color: isX ? Colors.green : Colors.red,
           ),
         ),
       );
@@ -72,7 +72,7 @@ class PlayerNames extends HookWidget {
                     'Enter Player Names',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 20,
+                      fontSize: 24,
                     ),
                   ),
                 ),
@@ -95,50 +95,43 @@ class PlayerNames extends HookWidget {
                         child: HookBuilder(builder: (context) {
                           final isEnabled = useValueListenable(isBtnEnabled);
                           return ButtonWidget(
-                              isEnabled: isEnabled,
-                              onPressed: () {
-                                if (playerXController.text
-                                        .toLowerCase()
-                                        .trim() ==
-                                    playerOController.text
-                                        .toLowerCase()
-                                        .trim()) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      backgroundColor: GameColors.kForeground,
-                                      content: Text(
-                                        'Please enter different names',
-                                        style: TextStyle(
-                                          color: GameColors.kWhitish,
-                                        ),
+                            isEnabled: isEnabled,
+                            onPressed: () {
+                              if (playerXController.text.toLowerCase().trim() ==
+                                  playerOController.text.toLowerCase().trim()) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    backgroundColor: GameColors.kForeground,
+                                    content: Text(
+                                      'Please enter different names',
+                                      style: TextStyle(
+                                        color: GameColors.kWhitish,
                                       ),
-                                    ),
-                                  );
-
-                                  return;
-                                }
-                                FocusScope.of(context).unfocus(
-                                    disposition: UnfocusDisposition
-                                        .previouslyFocusedChild);
-
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => GameBaseScreen(
-                                      playerOName: playerOController.text
-                                          .toLowerCase()
-                                          .trim(),
-                                      playerXName: playerXController.text
-                                          .toLowerCase()
-                                          .trim(),
-                                      isAgainstAI: false,
                                     ),
                                   ),
                                 );
-                              },
-                              text: 'Start Game');
+                                return;
+                              }
+                              FocusScope.of(context).unfocus(
+                                  disposition: UnfocusDisposition.previouslyFocusedChild);
+
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => GameBaseScreen(
+                                    playerOName: playerOController.text.toLowerCase().trim(),
+                                    playerXName: playerXController.text.toLowerCase().trim(),
+                                    isAgainstAI: false,
+                                  ),
+                                ),
+                              );
+                            },
+                            text: 'Start Game',
+                            color: Colors.white, // Set the button color to white
+                          );
                         }),
                       ),
+
                     ],
                   ),
                 ),
